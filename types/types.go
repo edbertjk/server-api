@@ -4,12 +4,14 @@ import (
 	"time"
 )
 
-type UserStore interface{
+type UserStore interface {
 	GetUserByEmail(email string) (*User, error)
+	GetUserByID(id string) (*User, error)
+	CreateUser(user *User) error
 }
 
 type User struct {
-	ID        int    `json:"id"`
+	ID        int       `json:"id"`
 	FirstName string    `json:"firstName"`
 	LastName  string    `json:"lastName"`
 	Email     string    `json:"email"`
